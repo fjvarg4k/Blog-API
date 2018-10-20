@@ -33,7 +33,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', jsonParser, (req, res) => {
-  const requiredFields = ['title', 'content', 'author', 'id'];
+  const requiredFields = ['title', 'content', 'author', 'id', 'publishDate'];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -54,7 +54,8 @@ router.put('/:id', jsonParser, (req, res) => {
     id: req.params.id,
     title: req.body.title,
     content: req.body.content,
-    author: req.body.author
+    author: req.body.author,
+    publishDate: req.body.publishDate
   });
   res.status(204).end();
 });
